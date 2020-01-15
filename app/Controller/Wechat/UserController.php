@@ -20,8 +20,11 @@ class UserController extends WechatBaseController
         $code = $this->request->input('code');
         $app = $this->getMiniProgram();
         $user = $app->auth->session($code);
+        // 消息推送，或者微信支付 都需要accesstoken
+//        $token = $app->access_token->getToken();
         return [
-            'user' => $user
+            'user' => $user,
+//            'token' => $token
         ];
     }
 }
