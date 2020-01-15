@@ -11,18 +11,11 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
  */
 
-namespace App\Controller;
+namespace App\Controller\Wechat;
 
-class WechatController extends AbstractController
+class UserController extends WechatBaseController
 {
-    public function getMiniProgram()
-    {
-        $config = config('easywechat.mini_program');
-        $app = \EasyWeChat\Factory::miniProgram($config);
-        return $app;
-    }
-
-    public function user()
+    public function info()
     {
         $code = $this->request->input('code');
         $app = $this->getMiniProgram();

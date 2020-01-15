@@ -14,4 +14,4 @@ use Hyperf\HttpServer\Router\Router;
 
 Router::addRoute(['GET', 'POST', 'HEAD'], '/', 'App\Controller\IndexController@index');
 
-Router::get('/app/user', 'App\Controller\WechatController@user');
+Router::get('/app/user/info', 'App\Controller\Wechat\UserController@info');
