@@ -63,6 +63,8 @@ class UserController extends WechatBaseController
             $data = json_decode($data, true);
             WechatUser::firstOrCreate([
                 'open_id' => $data['openId'],
+            ],[
+                'open_id' => $data['openId'],
                 'nickname' => $data['nickName'],
                 'gender' => $data['gender'],
                 'language' => $data['language'],
