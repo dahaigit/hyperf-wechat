@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace App\Controller\Wechat;
 
-use App\Controller\AbstractController;
+use App\Controller\BaseController;
 
-class WechatBaseController extends AbstractController
+class WechatBaseController extends BaseController
 {
     public $miniProgramApp;
 
@@ -24,10 +24,10 @@ class WechatBaseController extends AbstractController
      * User: mhl
      * @return \EasyWeChat\MiniProgram\Application
      */
-    public function getMiniProgram()
+    public function getMiniProgramApp()
     {
         if (is_null($this->miniProgramApp)) {
-            $config = config('easywechat.mini_program');
+            $config = config('wechat.mini_program');
             $this->miniProgramApp = \EasyWeChat\Factory::miniProgram($config);
         }
         return $this->miniProgramApp;
