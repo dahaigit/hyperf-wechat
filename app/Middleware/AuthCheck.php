@@ -17,14 +17,22 @@ class AuthCheck implements MiddlewareInterface
      */
     protected $container;
 
-    public function __construct(ContainerInterface $container)
+    protected $response;
+
+    public function __construct(ContainerInterface $container, \Hyperf\HttpServer\Contract\ResponseInterface $httpResponse)
     {
         $this->container = $container;
+        $this->response = $httpResponse;
     }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        var_dump('权限验证了');
+        if (empty($request->getHeader('auth_code'))) {
+            return $this->response->json([
+                'message' => '权限验证没有通过',
+                'code' => 401,
+            ]);
+        }
         return $handler->handle($request);
     }
 }

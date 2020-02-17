@@ -32,6 +32,14 @@ class UserController extends WechatBaseController
         return $this->response('请求成功', $data);
     }
 
+    public function test()
+    {
+        return $this->response('请求成功', [
+            'username' => '孟海龙',
+            'age' => 18
+        ]);
+    }
+
     /**
      * Notes: 获取服务端token，消息推送，或者微信支付 都需要
      * User: mhl

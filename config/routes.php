@@ -14,7 +14,8 @@ use Hyperf\HttpServer\Router\Router;
 
 Router::addRoute(['GET', 'POST', 'HEAD'], '/', 'App\Controller\IndexController@index');
 Router::get('/app/auth/login', 'App\Controller\Wechat\AuthController@login');
-Router::post('/user/parse', 'App\Controller\Wechat\UserController@parse');
+Router::post('/app/user/parse', 'App\Controller\Wechat\UserController@parse');
+
 // 有权限验证
 Router::addGroup('/app', function(){
     Router::get('/user/info', 'App\Controller\Wechat\UserController@info');
